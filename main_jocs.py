@@ -63,6 +63,9 @@ def playGame(whatGame):
     
     if whatGame == 9:
         bm.startBuscamines()
+
+    if whatGame == 5:
+        bm.startChinos()
     # A la versió 1.0 hauréu de modificar aquest codi afegint alguna cosa
     # similar al que poso a baix
     # elif whatGame == X:
@@ -85,6 +88,7 @@ def main():
     dictGames={
         0: "Vull deixar de jugar",
         9: "Busca Mines"
+        5: "Chinos"
     }
     # A la versió 1.0 has d'afegir aquó el nom del teu joc.
     # Creo una llista de missatges per mostrar a la funció
