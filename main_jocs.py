@@ -60,9 +60,9 @@ def playGame(whatGame):
     if whatGame == 0:
         # en veritat això no es un error, sino el codi d'error per sortir
         errorsInExecution = 1
-
-    if whatGame == 1:
-        pj.startPenjat()
+    elif whatGame == 1:
+        print("Ejecutando penjat")
+        errorsInExecution = pj.startPenjat()
     # A la versió 1.0 hauréu de modificar aquest codi afegint alguna cosa
     # similar al que poso a baix
     # elif whatGame == X:
