@@ -57,12 +57,13 @@ def chooseIntegerDictionaryMessages(dictIn, listStrMsg):
 def playGame(whatGame, player):
     # Si no pasa res torno un 0. El programa continua normal
     errorsInExecution = 0
+    victory = False
     if whatGame == 0:
         # en veritat això no es un error, sino el codi d'error per sortir
         errorsInExecution = 1
     
     if whatGame == 9:
-        bm.startBuscamines()
+        errorsInExecution,victory =  bm.startBuscamines()
     # A la versió 1.0 hauréu de modificar aquest codi afegint alguna cosa
     # similar al que poso a baix
     # elif whatGame == X:
