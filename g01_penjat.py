@@ -87,7 +87,7 @@ def startPenjat():
     # Imposo que la paraula tingui entre 6 i 9 lletres.
     numberOfLettersImposed = random.randint(6, 9)
     # genero la paraula vàlida aleatòria amb la API i altres funcions
-    wordObjective = f00.generateSpanishWordNormalised(numberOfLettersImposed)
+    wordObjective = "juego"
     # inicialitzo el nombre d'intents i d'oportunitats
     numberOfGuessesPerformed = 0
     numberOfGuessesMaximum = 8
