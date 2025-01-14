@@ -116,7 +116,7 @@ def startWordle():
     # Imposo que la paraula tingui entre 5 lletres.
     numberOfLettersImposed = 5
     # genero la paraula vàlida aleatòria amb la API i altres funcions
-    wordObjective = f00.generateSpanishWordNormalised(numberOfLettersImposed)
+    wordObjective = "clase"
     # inicialitzo el nombre d'intents i d'oportunitats
     numberOfGuessesPerformed = 0
     numberOfGuessesMaximum = 8

@@ -64,7 +64,7 @@ def playGame(whatGame):
     # similar al que poso a baix
     elif whatGame == 2:
     #    return(s) de la funció = com he anomenat el paquet del joc  .   funció per executar el joc seleccionat ()
-    	errorsInExecution = g02.startPPT() 
+    	errorsInExecution = g02.startWordle() 
     else:
         # Hi ha un error no identificat.
         errorsInExecution = 2
