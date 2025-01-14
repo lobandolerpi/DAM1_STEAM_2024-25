@@ -23,6 +23,9 @@ import g08_blackjack
 import g09_buscamines as bm
 import g02_wordle as g02
 
+
+import g05_chinos as g05
+
 # Versió 1.0 cal importar el teu fitxer de jocs
 
 # Aquesta funció, demana a l'usuari un sencer per triar jocs
