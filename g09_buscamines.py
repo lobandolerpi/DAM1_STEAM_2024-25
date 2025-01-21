@@ -291,7 +291,7 @@ def startBuscamines():
     else:
         winner = False
     f00.messageEnd(winner, player)
-    return errorsInExecution
+    return errorsInExecution, winner
     # Quan vingui la versió 2.0 aquí haureu d'afegir més coses al return
 
 
