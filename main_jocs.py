@@ -89,7 +89,7 @@ def main():
     # creo un diccionari amb els jocs instal·lats
     dictGames={
         0: "Vull deixar de jugar",
-	3: "Pedra, paper o tissores"
+	3: "Pedra, paper o tissores",
         9: "Busca Mines"
 
     }
