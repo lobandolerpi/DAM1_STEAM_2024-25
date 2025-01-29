@@ -1,0 +1,4 @@
+id,username,passw,tp,tv
+0,aaa,aaa,2,1
+1,bbb,bbb,2,0
+2,ccc,ccc,3,2

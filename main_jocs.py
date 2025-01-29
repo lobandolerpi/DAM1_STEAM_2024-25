@@ -20,6 +20,8 @@ from termcolor import colored
 import f00_functions as f00
 import f01_data_base as fdb
 import g02_wordle as g02
+import g09_buscamines as bm
+
 # Versió 1.0 cal importar el teu fitxer de jocs
 
 # Aquesta funció, demana a l'usuari un sencer per triar jocs
@@ -54,35 +56,42 @@ def chooseIntegerDictionaryMessages(dictIn, listStrMsg):
 
 # Aquesta funció només executa la funció del correcte.
 # Depeent del paràmetre. L'haureu de tocar a la Versio 1.0
-def playGame(whatGame):
+def playGame(whatGame, player):
     # Si no pasa res torno un 0. El programa continua normal
     errorsInExecution = 0
+    victory = False
     if whatGame == 0:
         # en veritat això no es un error, sino el codi d'error per sortir
         errorsInExecution = 1
+    
+    if whatGame == 9:
+        errorsInExecution,victory =  bm.startBuscamines()
     # A la versió 1.0 hauréu de modificar aquest codi afegint alguna cosa
     # similar al que poso a baix
     elif whatGame == 2:
     #    return(s) de la funció = com he anomenat el paquet del joc  .   funció per executar el joc seleccionat ()
-    	errorsInExecution = g02.startPPT() 
+    	errorsInExecution = g02.startWordle() 
     else:
         # Hi ha un error no identificat.
         errorsInExecution = 2
-    return errorsInExecution
+    return errorsInExecution, victory
 
 
 def main():
     # A la versió 2.0 aquí anirà la selecció de jugador i 
     # consulta a la base de dades (Ho farà el professor)
     fdb.tmpMsgDB() # Comprobació que la base de dades 
+    BdD = fdb.loadPlayersDB(fdb.pathDB)  # Carrego la Base de dades
+    BdD, indU = fdb.whoPlays(BdD) # Pregunto qui jugarà
+    player = BdD['username'][indU] # Extrec la info del player de la BdD a una variable
     print()
-    print('Benvigut a JOCS CALAMOT')
+    print(player + ', benvigut a JOCS CALAMOT')
 
     # creo un diccionari amb els jocs instal·lats
     dictGames={
         0: "Vull deixar de jugar",
-	
-	2: "Jugar a Wordle"
+	2: "Jugar a Wordle",
+        9: "Busca Mines"
     }
     # A la versió 1.0 has d'afegir aquó el nom del teu joc.
     # Creo una llista de missatges per mostrar a la funció
@@ -98,15 +107,15 @@ def main():
         numGame = chooseIntegerDictionaryMessages(dictGames, listMsg2User)
         # A jugar una partida!
         # A la versió 2.0 el playGame hauria de acceptar el paràmetre recollir el jugador 
-        whatToDoNext = playGame(numGame)
+        whatToDoNext, victory = playGame(numGame, player)
         # I tornar si s'ha guanyat o perdut.
 
         # A la versió 2.0 aquí anirà l'actualització de les victòries del jugador a la base de dades 
         # Ho farà el professor, però necessitarà una variable que ha d'extreure playGame
         # I per tant el teu joc, l'haurà de subministrar.
-
-
-
+        BdD = fdb.updateVictories(indU, BdD, victory) # Actualitzo la BdD amb el resultat
+        fdb.writePlayersDB(fdb.pathDB, BdD) # guardo la BdD al .txt (si no el jugador pot apagar l'ordinador per no perdre)
+        fdb.printVictories(BdD, indU) # Printo les estadístiques del jugador
         # Que fer després de jugar. Si hi ha un error al joc s'hauria de tractar aquí.
         if whatToDoNext == 2:
             print("Hi ha hagut un error al joc, tornant al menu de selecció...")
